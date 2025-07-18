@@ -1,10 +1,17 @@
 from fastapi import FastAPI
+from .routers import recipes
+
 from typing import List
 
 app = FastAPI(title="FlavorMonk API", description="Backend for FlavorMonk meal planning app")
+# Include recipe routes
+app.include_router(recipes.router)
+
 
 @app.get("/")
 def read_root():
+    # Incde_router(recipes.router) (moved above)
+
     """Root endpoint returns a welcome message."""
     return {"message": "Welcome to FlavorMonk API"}
 
